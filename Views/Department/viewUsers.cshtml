@@ -1,12 +1,7 @@
-﻿@using Team7_StationeryStore.Models;
-
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
-    var lists = (List<Requisition>)ViewData["Requisitions"];
-    var userid= ViewData["userid"];
-    var username = ViewData["username"];
+    ViewData["Title"] = "viewUsers";
+    var lists = (List<Employee>)ViewData["users"];
 }
 
 
@@ -23,18 +18,11 @@
 </head>
 
 
-<header style="background-color:#ECF3F3;">
-    <ul>
-        <li class="logo">Logic <span>Stationery</span></li>
-        <li> <button class="menubtn" href="#inventory">Inventory</li>
-        <li> <button class="menubtn" href="#requisitions">Requisitions</button></li>
-        <li><p class="userdetails">@username</p> <img src="~/lib/img/employeeicon.jpg"> </li>
-    </ul>
-</header>
+<div>
+    <a asp-controller="Department" asp-action="addUser" style="margin-left:900px;font-size:30px">Add User</a>
+</div>
 
-
-
-<h2 style="text-align:center">Your Requisition History</h2>
+<h2 style="text-align:center">List of Registered Users</h2>
 
 <div class="container">
     <div align=center>
@@ -42,9 +30,14 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Requisition</th>
-                        <th>Status</th>
-                        
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Date Reg</th>
+                        <th>Selected Days</th>
+                        <th>Add. request</th>
+
                     </tr>
                 </thead>
 
@@ -53,9 +46,13 @@
                     {
                         <tr>
 
-                            <td class="text-left"><a asp-controller="Department" asp-action="ViewRequisitionDetail" asp-route-reqid="@i.Id">@i.Id</a></td>
-                            <td class="text-left">@i.status</td>
-                            
+                            <td class="text-left">@i.Id</td>
+                            <td class="text-left">@i.Name</td>
+                            <td class="text-left">@i.Email</td>
+                            <td class="text-left">@i.Gender</td>
+                            <td class="text-left">@i.DateReg</td>
+                            <td class="text-left">@i.SelectedDays</td>
+                            <td class="text-left">@i.AdditionalRequest</td>
                         </tr>
                     }
                 </tbody>
@@ -66,6 +63,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 

@@ -11,7 +11,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Team7_StationeryStore.Models;
 using Team7_StationeryStore.Database;
-using Team7_StationeryStore.Service;
 
 namespace Team7_StationeryStore
 {
@@ -32,11 +31,6 @@ namespace Team7_StationeryStore
             services.AddDbContext<StationeryContext>(opt =>
            opt.UseLazyLoadingProxies()
            .UseSqlServer(Configuration.GetConnectionString("DbConn")));
-            services.AddScoped<RequisitionService>();
-            services.AddScoped<InventoryService>();
-            services.AddScoped<DepartmentService>();
-            services.AddScoped<RetrievalService>();
-            services.AddScoped<DisbursementService>();
             services.AddSession();
         }
 
@@ -64,7 +58,7 @@ namespace Team7_StationeryStore
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Login}/{id?}");
+                    pattern: "{controller=Department}/{action=viewUsers}");
             });
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();

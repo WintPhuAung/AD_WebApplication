@@ -8,25 +8,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Team7_StationeryStore.Models
 {
-    public enum Role { 
-        EMPLOYEE,DEPT_HEAD,DEPT_REP,STORE_CLERK,STORE_SUPERVISOR,STORE_MANAGER
-    }
     public class Employee
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string Id { get; set; }
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [MaxLength(30)]       
         public string Name { get; set; }
-        [Required]
+
+        [MaxLength(50)]
         public string Email { get; set; }
-        [Required]
-        public string Password { get;  set; }
-        public Role Role { get;  set; }
-        [Required]
-        public string DepartmentsId { get;  set; }
-        public string Status { get; set; }
-        public virtual Departments Departments { get;set; }
-        public virtual ICollection<AdjustmentVoucher> empAdjustment { get; set; }
-        public  virtual ICollection<AdjustmentVoucher> appEmpAdjustment { get; set; }
+       
+        public string Gender { get; set; }
+        public string DateReg { get; set; }
+
+        public string SelectedDays { get; set; }
+        public bool Day1 { get; set; }
+        public bool Day2 { get; set; }
+        public bool Day3 { get; set; }
+
+        [MaxLength(100)]
+        public string AdditionalRequest { get; set; }
     }
 }

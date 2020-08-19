@@ -1,0 +1,65 @@
+﻿@model Team7_StationeryStore.Models.Employee
+@{
+    ViewData["Title"] = "registrationform";
+    string err_msg = (String)ViewData["error"];
+}
+
+<head>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+@using (Html.BeginForm("submit", "Department", FormMethod.Post))
+{
+
+<table>
+    <tr>
+        <td>@Html.LabelFor(x => x.Name)</td>
+        <td><input type="text" name="Name" id="name" /></td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(x => x.Email)&nbsp;</td>
+        <td><input type="text" name="Email" id="email" /></td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(x => x.Gender)&nbsp;</td>
+        <td>
+            @Html.RadioButtonFor(m => m.Gender, "Male")<span>Male </span>
+            @Html.RadioButtonFor(m => m.Gender, "Female")<span>Female </span>
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(x => x.DateReg)&nbsp;</td>
+        <td><input type="text" name="DateReg" id="date" placeholder="mm/dd/yyyy"/></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td id="error_msg">@err_msg</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(x => x.SelectedDays)&nbsp;</td>
+        <td>
+            @Html.CheckBoxFor(m => m.Day1)<span>Day 1 </span>
+            @Html.CheckBoxFor(m => m.Day2)<span>Day 2 </span>
+            @Html.CheckBoxFor(m => m.Day3)<span>Day 3 </span>
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(x => x.AdditionalRequest)&nbsp;</td>
+        <td>@Html.TextAreaFor(m => m.AdditionalRequest)</td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td><input type="Submit" value="Submit" id="login" /></td>
+    </tr>
+</table>
+}
+
+
+
+
+
